@@ -31,8 +31,22 @@ function updateSlideUI() {
   });
 }
 
+const slideIds = ['slide-overview', 'slide-about', 'slide-projects', 'slide-links'];
+
 function goToSlide(index) {
-  if (index < 0 || index >= totalSlides || isAnimating) return;
+  if (index < 0 || index >= totalSlides) return;
+
+  if (window.innerWidth <= 900) {
+    currentSlide = index;
+    updateSlideUI();
+    const targetEl = document.getElementById(slideIds[index]);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth' });
+    }
+    return;
+  }
+
+  if (isAnimating) return;
   isAnimating = true;
   currentSlide = index;
   updateSlideUI();
@@ -40,6 +54,21 @@ function goToSlide(index) {
     isAnimating = false;
   }, animDuration);
 }
+
+// Mobile scroll active state tracker
+window.addEventListener('scroll', () => {
+  if (window.innerWidth > 900) return;
+  slideIds.forEach((id, idx) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= 140 && rect.bottom >= 140) {
+        currentSlide = idx;
+        updateSlideUI();
+      }
+    }
+  });
+}, { passive: true });
 
 function nextSlide() {
   if (currentSlide < totalSlides - 1) {
@@ -56,7 +85,7 @@ function prevSlide() {
 // Wheel / Trackpad listener with debouncing
 let wheelTimeout = null;
 window.addEventListener('wheel', (e) => {
-  if (isAnimating) return;
+  if (window.innerWidth <= 900 || isAnimating) return;
   // If the active slide has internal scrollable content that isn't at the top/bottom:
   const activeSlide = document.querySelectorAll('.fp-slide')[currentSlide];
   if (activeSlide) {

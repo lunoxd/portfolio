@@ -1318,32 +1318,240 @@ body.standalone-body {
   color: var(--text-muted);
 }
 
-/* Responsive Rules */
-@media (max-width: 900px) {
-  .project-list {
-    grid-template-columns: 1fr;
+/* ==========================================================================
+   COMPREHENSIVE RESPONSIVE STYLES (TABLET & MOBILE)
+   ========================================================================== */
+
+/* Tablet Optimizations (768px - 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.75rem;
   }
 
-  .contact-links {
-    grid-template-columns: 1fr;
+  .side-dots-nav {
+    right: 1rem;
+    gap: 0.85rem;
   }
 
-  .info-row {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
+  .gamer-symbol-box {
+    width: 24px;
+    height: 24px;
+    font-size: 0.85rem;
+  }
+
+  .dot-label {
+    display: none; /* Keep side dots clean on tablet */
+  }
+
+  .hero-title {
+    font-size: 3.25rem;
+  }
+
+  .skills-showcase {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
   }
 }
 
-@media (max-width: 640px) {
+/* Mobile & Small Tablet Continuous Scroll & Sizing (< 900px) */
+@media (max-width: 900px) {
+  html, body {
+    overflow-y: auto !important;
+    height: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .slider-wrapper {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .slider-track {
+    height: auto !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .fp-slide {
+    height: auto !important;
+    min-height: auto !important;
+    padding: 4.5rem 0 3rem 0;
+    border-bottom: 2px solid var(--border-subtle);
+    display: block !important;
+  }
+
+  .side-dots-nav {
+    display: none !important;
+  }
+
   .container {
     padding: 0 1.25rem;
   }
 
-  .header-inner {
-    height: auto;
-    padding: 1rem 0;
+  .hero-header-row {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-alias {
+    font-size: 0.85rem;
+  }
+
+  .intro-lead {
+    font-size: 1.15rem;
+    line-height: 1.5;
+  }
+
+  .intro-talk {
+    gap: 1rem;
+  }
+
+  .intro-talk p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .info-row {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+    padding-bottom: 0.85rem;
+  }
+
+  .skills-showcase {
+    grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+    gap: 0.45rem;
+  }
+
+  .skill-card {
+    padding: 0.4rem 0.6rem;
+    gap: 0.4rem;
+  }
+
+  .skill-img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .skill-title {
+    font-size: 0.725rem;
+  }
+
+  .project-list {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .project-card {
+    padding: 1rem;
+  }
+
+  .project-img {
+    max-height: 190px;
+  }
+
+  .point-list li {
+    font-size: 0.8rem;
+  }
+
+  .contact-links {
+    grid-template-columns: 1fr;
     gap: 0.75rem;
+  }
+
+  .contact-card {
+    padding: 0.85rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .running-grid,
+  .hobbies-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .running-img-wrapper {
+    max-height: 320px;
+  }
+
+  .standalone-main {
+    padding: 5rem 0 3rem 0;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}
+
+/* Extra Small Phones (< 600px) */
+@media (max-width: 600px) {
+  .site-header {
+    position: sticky;
+  }
+
+  .header-inner {
+    height: auto;
+    padding: 0.6rem 0;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+
+  .logo-btn {
+    font-size: 0.95rem;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .nav-links {
+    gap: 0.75rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 2px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-btn {
+    font-size: 0.75rem;
+  }
+
+  .theme-toggle-btn {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.45rem;
+  }
+
+  .hero-title {
+    font-size: 1.95rem;
+  }
+
+  .section-title {
+    font-size: 0.85rem;
+  }
+
+  .section-title-emoji {
+    width: 24px;
+    height: 24px;
+  }
+
+  .project-categories-bar {
+    gap: 0.35rem;
+  }
+
+  .category-pill {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .project-actions {
+    flex-direction: column;
   }
 }
