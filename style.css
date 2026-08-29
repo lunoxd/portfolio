@@ -249,6 +249,26 @@ html, body {
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.04em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2em;
+}
+
+.name-emoji {
+  width: 0.85em;
+  height: 0.85em;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.logo-emoji {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 4px;
 }
 
 .hero-alias {
