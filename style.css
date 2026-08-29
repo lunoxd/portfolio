@@ -1602,31 +1602,35 @@ ul.desktop-only {
     transition: none !important;
   }
 
-  /* Slide Sections - Natural Flow with Smooth Scroll */
+  /* Slide Sections - Generous Page Spacing & Min-Height on Mobile */
   .fp-slide {
     height: auto !important;
-    min-height: auto !important;
+    min-height: calc(100svh - 52px) !important;
+    min-height: calc(100dvh - 52px) !important;
     overflow: visible !important;
-    display: block !important;
-    padding: 2.75rem 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    padding: 4.5rem 0 !important;
     border-bottom: 2px solid var(--border-strong) !important;
-    scroll-margin-top: calc(56px + env(safe-area-inset-top, 0px));
+    scroll-margin-top: calc(52px + env(safe-area-inset-top, 0px));
+    box-sizing: border-box !important;
   }
 
   .fp-slide:first-child {
-    padding-top: 2rem !important;
+    padding-top: calc(3.5rem + env(safe-area-inset-top, 0px)) !important;
   }
 
   .fp-slide:last-child {
     border-bottom: none !important;
-    padding-bottom: max(3rem, env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: max(4.5rem, env(safe-area-inset-bottom, 0px)) !important;
   }
 
   .fp-slide > .container {
-    margin: 0 !important;
+    margin: 0 auto !important;
     width: 100%;
     max-width: 100%;
-    padding: 0 1.25rem !important;
+    padding: 0 1.35rem !important;
     box-sizing: border-box;
   }
 
