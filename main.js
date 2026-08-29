@@ -375,33 +375,46 @@ function checkInitialHash() {
 window.addEventListener('load', checkInitialHash);
 window.addEventListener('hashchange', checkInitialHash);
 
-// Theme Toggle (Dark Default / Light Option)
+// Theme Toggle (White Default on Mobile, Dark Default on Desktop)
 const themeToggleBtn = document.getElementById('themeToggleBtn');
+const mobileThemeToggleBtn = document.getElementById('mobileThemeToggleBtn');
 const themeIcon = document.getElementById('themeIcon');
 const themeLabel = document.getElementById('themeLabel');
 
 function applyTheme(theme) {
+  const mobileThemeIcon = document.querySelector('.mobile-theme-icon');
   if (theme === 'light') {
     document.documentElement.setAttribute('data-theme', 'light');
     if (themeIcon) themeIcon.textContent = '☾';
     if (themeLabel) themeLabel.textContent = 'DARK';
+    if (mobileThemeIcon) mobileThemeIcon.textContent = '☾';
   } else {
     document.documentElement.removeAttribute('data-theme');
     if (themeIcon) themeIcon.textContent = '☀';
     if (themeLabel) themeLabel.textContent = 'LIGHT';
+    if (mobileThemeIcon) mobileThemeIcon.textContent = '☀';
   }
 }
 
-const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
-applyTheme(savedTheme);
+let initialTheme = localStorage.getItem('portfolio-theme');
+if (!initialTheme) {
+  initialTheme = window.innerWidth <= 768 ? 'light' : 'dark';
+}
+applyTheme(initialTheme);
+
+function toggleTheme() {
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  const newTheme = isLight ? 'dark' : 'light';
+  applyTheme(newTheme);
+  localStorage.setItem('portfolio-theme', newTheme);
+}
 
 if (themeToggleBtn) {
-  themeToggleBtn.addEventListener('click', () => {
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    const newTheme = isLight ? 'dark' : 'light';
-    applyTheme(newTheme);
-    localStorage.setItem('portfolio-theme', newTheme);
-  });
+  themeToggleBtn.addEventListener('click', toggleTheme);
+}
+
+if (mobileThemeToggleBtn) {
+  mobileThemeToggleBtn.addEventListener('click', toggleTheme);
 }
 
 // Initial UI
