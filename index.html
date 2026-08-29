@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ashok Manikanta — Game Developer &amp; Programmer</title>
+  <meta name="description" content="Portfolio of Ashok Manikanta (Waffy / GodofWaffle). Game developer and B.Tech CSE student at KL University (Class of 2028)." />
+  <link rel="icon" type="image/png" href="/github-logo.png" />
+  
+  <!-- Typography: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <!-- Top Sticky Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <button class="logo-btn" aria-label="Go to Overview">ASHOK MANIKANTA</button>
+        <nav aria-label="Main Navigation">
+          <ul class="nav-links">
+            <li><button class="nav-btn active" data-slide="0">01 // Overview</button></li>
+            <li><button class="nav-btn" data-slide="1">02 // About</button></li>
+            <li><button class="nav-btn" data-slide="2">03 // Projects</button></li>
+            <li><button class="nav-btn" data-slide="3">04 // Links</button></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Floating Side Square Navigation Dots (Matching Holy Hallow / Uploaded Screenshot) -->
+  <nav class="side-dots-nav" aria-label="Slide Indicator Dots">
+    <button class="dot-btn active" data-slide="0" aria-label="Slide 01 // Overview">
+      <span class="square-box"></span>
+      <span class="dot-label">01 // Overview</span>
+    </button>
+    <button class="dot-btn" data-slide="1" aria-label="Slide 02 // About">
+      <span class="square-box"></span>
+      <span class="dot-label">02 // About</span>
+    </button>
+    <button class="dot-btn" data-slide="2" aria-label="Slide 03 // Projects">
+      <span class="square-box"></span>
+      <span class="dot-label">03 // Projects</span>
+    </button>
+    <button class="dot-btn" data-slide="3" aria-label="Slide 04 // Links">
+      <span class="square-box"></span>
+      <span class="dot-label">04 // Links</span>
+    </button>
+  </nav>
+
+  <!-- Fullpage Slider Track -->
+  <div class="slider-wrapper">
+    <div class="slider-track" id="slider-track">
+      
+      <!-- ====================================================================
+           SLIDE 1: OVERVIEW & 2-MINUTE INTRODUCTION TALK
+           ==================================================================== -->
+      <section class="fp-slide" id="slide-overview">
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-header-row">
+              <h1 class="hero-title">Ashok Manikanta</h1>
+              <span class="hero-alias">(Waffy / @GodofWaffle)</span>
+            </div>
+
+            <div class="intro-talk">
+              <p class="intro-lead">
+                I'm Ashok, though most people across the internet know me as <mark class="hl">Waffy</mark>.
+              </p>
+              <p>
+                At our core, I think we all just want to <mark class="hl-cyan">make things that bring a little joy into someone's day</mark>. For me, that medium has always been games and code.
+              </p>
+              <p>
+                I didn't fall in love with programming because of complex theory or syntax. I fell in love with the quiet magic of pressing a key and watching something come to life on a glowing screen. There is a deep, simple joy in staying up late solving a weird bug, tuning how a jump feels until it's just right, or writing a server plugin — and then waking up to see thousands of people around the world playing together using something you built from scratch.
+              </p>
+              <p>
+                Right now, I'm pursuing Computer Science at <mark class="hl-green">KL University (2028)</mark>, but my real classroom has always been curiosity. Whether it's building 2D worlds in Godot, crafting Minecraft tools in Java, or learning new engines, I create because it makes life more interesting. I want to build things that feel honest, run fast, and leave people with a smile.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 2: ABOUT & TECHNICAL STACK
+           ==================================================================== -->
+      <section class="fp-slide" id="slide-about">
+        <div class="container">
+          <h2 class="section-title">02 // About &amp; Technical Stack</h2>
+          
+          <div class="info-block">
+            <div class="info-row">
+              <span class="info-label">Education</span>
+              <div class="info-value">
+                <div class="education-wrapper">
+                  <img src="/kl-university.png" alt="KL University" class="edu-logo" />
+                  <div>
+                    <strong>B.Tech in Computer Science / Engineering</strong>
+                    <div class="edu-sub">KL University — Vijayawada (2024 — 2028)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <span class="info-label">Core Focus</span>
+              <div class="info-value">
+                <strong>Game Architecture &amp; Server Infrastructure:</strong> Designing responsive 2D player controllers, tight jump curves, state-driven animations, multi-threaded server event listeners, and low-latency packet handling.
+              </div>
+            </div>
+
+            <div class="info-row">
+              <span class="info-label">Tech &amp; Tools</span>
+              <div class="info-value">
+                <div class="skills-showcase">
+                  <a href="https://unity.com/" target="_blank" rel="noopener" class="skill-card">
+                    <img src="/skills/unity.png" alt="Unity" class="skill-img" />
+                    <span class="skill-title">Unity ↗</span>
+                    <span class="skill-tooltip">
+                      <strong>Unity</strong>
+                      <span>Industry-standard real-time 2D &amp; 3D game development engine.</span>
+                    </span>
+                  </a>
+                  <a href="https://godotengine.org/" target="_blank" rel="noopener" class="skill-card">
+                    <img src="/skills/godot.png" alt="Godot" class="skill-img" />
+                    <span class="skill-title">Godot ↗</span>
+                    <span class="skill-tooltip">
+                      <strong>Godot Engine</strong>
+                      <span>Lightweight, open-source 2D and 3D game engine.</span>
+                    </span>
+                  </a>
+                  <a href="https://learn.microsoft.com/en-us/dotnet/csharp/" target="_blank" rel="noopener" class="skill-card">
+                    <img src="/skills/csharp.png" alt="C#" class="skill-img" />
+                    <span class="skill-title">C# ↗</span>
+                    <span class="skill-tooltip">
+                      <strong>C# (.NET)</strong>
+                      <span>Strongly-typed object-oriented language for Unity &amp; systems.</span>
+                    </span>
+                  </a>
+                  <a href="https://dev.java/" target="_blank" rel="noopener" class="skill-card">
+                    <img src="/skills/java.png" alt="Java" class="skill-img" />
+                    <span class="skill-title">Java ↗</span>
+                    <span class="skill-tooltip">
+                      <strong>Java</strong>
+                      <span>High-performance OOP language for Minecraft plugins &amp; server tools.</span>
+                    </span>
+                  </a>
+                  <a href="https://isocpp.org/" target="_blank" rel="noopener" class="skill-card">
+                    <img src="/skills/cpp.png" alt="C++" class="skill-img" />
+                    <span class="skill-title">C++ ↗</span>
+                    <span class="skill-tooltip">
+                      <strong>C++</strong>
+                      <span>High-performance systems programming language for games &amp; graphics.</span>
+                    </span>
+                  </a>
+                  <a href="https://www.atlassian.com/software/jira" target="_blank" rel="noopener" class="skill-card">
+                    <img src="/skills/jira.png" alt="Jira" class="skill-img" />
+                    <span class="skill-title">Jira ↗</span>
+                    <span class="skill-tooltip">
+                      <strong>Jira</strong>
+                      <span>Agile sprint tracking, task roadmapping &amp; project management.</span>
+                    </span>
+                  </a>
+                  <a href="https://www.figma.com/" target="_blank" rel="noopener" class="skill-card">
+                    <img src="/skills/figma.png" alt="Figma" class="skill-img" />
+                    <span class="skill-title">Figma ↗</span>
+                    <span class="skill-tooltip">
+                      <strong>Figma</strong>
+                      <span>Collaborative UI/UX interface design &amp; interactive prototyping.</span>
+                    </span>
+                  </a>
+                  <a href="https://www.blender.org/" target="_blank" rel="noopener" class="skill-card">
+                    <img src="/skills/blender.png" alt="Blender" class="skill-img" />
+                    <span class="skill-title">Blender ↗</span>
+                    <span class="skill-tooltip">
+                      <strong>Blender</strong>
+                      <span>Open-source 3D modeling, texturing, rigging &amp; rendering suite.</span>
+                    </span>
+                  </a>
+                  <a href="https://www.mysql.com/" target="_blank" rel="noopener" class="skill-card">
+                    <img src="/skills/sql.png" alt="SQL" class="skill-img" />
+                    <span class="skill-title">SQL ↗</span>
+                    <span class="skill-tooltip">
+                      <strong>SQL / Relational DB</strong>
+                      <span>Standard database query language for structured data storage.</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <span class="info-label">Operating Systems</span>
+              <div class="info-value">
+                <div class="skills-showcase">
+                  <a href="https://www.linux.org/" target="_blank" rel="noopener" class="skill-card">
+                    <img src="/skills/linux.png" alt="Linux" class="skill-img" />
+                    <span class="skill-title">Linux ↗</span>
+                    <span class="skill-tooltip">
+                      <strong>Linux</strong>
+                      <span>Open-source Unix-like operating system kernel &amp; server platform.</span>
+                    </span>
+                  </a>
+                  <a href="https://www.apple.com/macos/" target="_blank" rel="noopener" class="skill-card">
+                    <img src="/skills/macos.png" alt="macOS" class="skill-img" />
+                    <span class="skill-title">macOS ↗</span>
+                    <span class="skill-tooltip">
+                      <strong>macOS</strong>
+                      <span>Apple desktop Unix operating system for software development.</span>
+                    </span>
+                  </a>
+                  <a href="https://www.microsoft.com/windows/" target="_blank" rel="noopener" class="skill-card">
+                    <img src="/skills/windows.png" alt="Windows" class="skill-img" />
+                    <span class="skill-title">Windows ↗</span>
+                    <span class="skill-tooltip">
+                      <strong>Windows</strong>
+                      <span>Microsoft desktop OS for PC gaming &amp; development workloads.</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 3: FEATURED PROJECTS
+           ==================================================================== -->
+      <section class="fp-slide" id="slide-projects">
+        <div class="container">
+          <h2 class="section-title">03 // Featured Projects</h2>
+
+          <!-- Interactive Category Filter Radios -->
+          <div class="project-categories-bar">
+            <button class="category-pill active" data-filter="all">All Works (2)</button>
+            <button class="category-pill" data-filter="featured">★ Featured (2)</button>
+            <button class="category-pill" data-filter="completed">✓ Completed (2)</button>
+            <button class="category-pill" data-filter="ongoing">
+              ● Ongoing (0)
+              <span class="pill-tooltip">
+                <img src="/emoji-deactivated.webp" alt="Deactivated" class="status-emoji" /> Nothing here yet
+              </span>
+            </button>
+          </div>
+          
+          <div class="project-list">
+            
+            <!-- Empty State when category has no projects -->
+            <div class="empty-projects-state">
+              <img src="/emoji-deactivated.webp" alt="Deactivated" class="empty-emoji" />
+              <div class="empty-title">Nothing here yet</div>
+              <div class="empty-desc">// No ongoing projects currently in progress. Check back soon!</div>
+            </div>
+
+            <!-- Project 1: One Player Sleep+ -->
+            <article class="project-card is-featured is-completed">
+              <div class="project-top">
+                <h3 class="project-name">One Player Sleep+</h3>
+                <span class="project-badge badge-green">
+                  <img src="/emoji-download.webp" alt="" class="badge-emoji" />83.8K+ DOWNLOADS
+                </span>
+              </div>
+              <img src="/oneplayersleep.png" alt="One Player Sleep+ Plugin Banner" class="project-img" />
+              <p class="project-desc">
+                A high-performance Minecraft server plugin that lets a single player skip the night for the entire server without requiring everyone to sleep. Engineered with asynchronous scheduling to ensure zero server TPS drops.
+              </p>
+              <ul class="point-list">
+                <li><img src="/emoji-bullet.webp" alt="" class="bullet-emoji" />Multi-threaded Folia support &amp; native PaperMC API</li>
+                <li><img src="/emoji-bullet.webp" alt="" class="bullet-emoji" />Custom bed animations &amp; configurable sleep percentages</li>
+                <li><img src="/emoji-bullet.webp" alt="" class="bullet-emoji" />Supports Purpur, Spigot, Bukkit &amp; Paper ecosystems</li>
+              </ul>
+              <div class="project-tags">
+                <span class="tag tag-featured">★ Featured</span>
+                <span class="tag tag-completed">✓ Completed</span>
+                <span class="tag">Java</span>
+                <span class="tag">Paper API</span>
+                <span class="tag">Folia</span>
+                <span class="tag">Spigot</span>
+                <span class="tag">Modrinth</span>
+              </div>
+              <a href="https://modrinth.com/plugin/oneplayersleepgg" target="_blank" rel="noopener" class="project-action">
+                Open on Modrinth ↗
+              </a>
+            </article>
+
+            <!-- Project 2: Zeroro 2D Game -->
+            <article class="project-card is-featured is-completed">
+              <div class="project-top">
+                <h3 class="project-name">Zeroro 2D Game</h3>
+                <span class="project-badge">FIRST GAME • GODOT</span>
+              </div>
+              <img src="/zeroro2d.png" alt="Zeroro 2D Game Gameplay Preview" class="project-img" />
+              <p class="project-desc">
+                My first game project, developed in Godot Engine starting from Brackeys' tutorial and expanded with custom level design, mobile on-screen joystick controls, and cross-platform builds.
+              </p>
+              <ul class="point-list">
+                <li><img src="/emoji-bullet.webp" alt="" class="bullet-emoji" />Custom 2D platformer movement, wall jumps &amp; collision physics</li>
+                <li><img src="/emoji-bullet.webp" alt="" class="bullet-emoji" />On-screen touch UI controls designed for Android devices</li>
+                <li><img src="/emoji-bullet.webp" alt="" class="bullet-emoji" />Playable directly in the web browser via WebGL / WebAssembly</li>
+              </ul>
+              <div class="project-tags">
+                <span class="tag tag-featured">★ Featured</span>
+                <span class="tag tag-completed">✓ Completed</span>
+                <span class="tag">Godot Engine</span>
+                <span class="tag">2D Gameplay</span>
+                <span class="tag">Level Design</span>
+                <span class="tag">Touch UI</span>
+                <span class="tag">Android / Web</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://lunoxd.github.io/Zeroro2DGame/" target="_blank" rel="noopener" class="project-action project-action-primary">
+                  Play in Web ↗
+                </a>
+                <a href="https://github.com/lunoxd/Zeroro2DGame" target="_blank" rel="noopener" class="project-action">
+                  GitHub Repo ↗
+                </a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 4: LINKS & SOCIALS
+           ==================================================================== -->
+      <section class="fp-slide" id="slide-links">
+        <div class="container">
+          <h2 class="section-title">04 // Links &amp; Channels</h2>
+          
+          <div class="contact-links">
+            <a href="https://github.com/lunoxd" target="_blank" rel="noopener" class="contact-card">
+              <div class="contact-card-left">
+                <img src="/github-logo.png" alt="GitHub" class="link-icon" />
+                <span>GitHub</span>
+              </div>
+              <strong>@lunoxd <img src="/emoji-activated.webp" alt="Active" class="status-emoji" /> ↗</strong>
+            </a>
+
+            <a href="https://www.youtube.com/@GodofWaffle" target="_blank" rel="noopener" class="contact-card">
+              <div class="contact-card-left">
+                <img src="/youtube-icon.svg" alt="YouTube" class="link-icon" />
+                <span>YouTube</span>
+              </div>
+              <strong>@GodofWaffle <img src="/emoji-activated.webp" alt="Active" class="status-emoji" /> ↗</strong>
+            </a>
+            
+            <a href="https://modrinth.com/organization/1e1Iwimg" target="_blank" rel="noopener" class="contact-card">
+              <div class="contact-card-left">
+                <img src="/modrinth-org.png" alt="Modrinth Organization" class="link-icon" />
+                <span>Modrinth Org</span>
+              </div>
+              <strong>1e1Iwimg <img src="/emoji-activated.webp" alt="Active" class="status-emoji" /> ↗</strong>
+            </a>
+
+            <a href="https://instagram.com/7ntie" target="_blank" rel="noopener" class="contact-card">
+              <div class="contact-card-left">
+                <img src="/instagram-logo.png" alt="Instagram" class="link-icon" />
+                <span>Instagram</span>
+              </div>
+              <strong>@7ntie (Deactivated) <img src="/emoji-deactivated.webp" alt="Deactivated" class="status-emoji" /> ↗</strong>
+            </a>
+
+            <a href="https://instagram.com/dr8ming" target="_blank" rel="noopener" class="contact-card">
+              <div class="contact-card-left">
+                <img src="/instagram-logo.png" alt="Instagram" class="link-icon" />
+                <span>Instagram</span>
+              </div>
+              <strong>@dr8ming (Deactivated) <img src="/emoji-deactivated.webp" alt="Deactivated" class="status-emoji" /> ↗</strong>
+            </a>
+          </div>
+
+          <!-- Footer Inside Last Slide -->
+          <footer class="site-footer">
+            <div class="footer-inner">
+              <div>&copy; 2026 Ashok Manikanta (Waffy)</div>
+              <div>KL University &bull; Game Developer</div>
+            </div>
+          </footer>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
