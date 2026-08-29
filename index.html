@@ -335,44 +335,44 @@
           <h2 class="section-title">04 // Links &amp; Channels</h2>
           
           <div class="contact-links">
-            <a href="https://github.com/lunoxd" target="_blank" rel="noopener" class="contact-card">
+            <a href="https://github.com/lunoxd" class="contact-card" data-url="https://github.com/lunoxd" data-name="GitHub" data-handle="@lunoxd">
               <div class="contact-card-left">
                 <img src="/github-logo.png" alt="GitHub" class="link-icon" />
                 <span>GitHub</span>
               </div>
-              <strong>@lunoxd <img src="/emoji-activated.webp" alt="Active" class="status-emoji" /> ↗</strong>
+              <strong>@lunoxd <img src="/emoji-link.webp" alt="Link" class="status-emoji" /> ↗</strong>
             </a>
 
-            <a href="https://www.youtube.com/@GodofWaffle" target="_blank" rel="noopener" class="contact-card">
+            <a href="https://www.youtube.com/@GodofWaffle" class="contact-card" data-url="https://www.youtube.com/@GodofWaffle" data-name="YouTube" data-handle="@GodofWaffle">
               <div class="contact-card-left">
                 <img src="/youtube-icon.svg" alt="YouTube" class="link-icon" />
                 <span>YouTube</span>
               </div>
-              <strong>@GodofWaffle <img src="/emoji-activated.webp" alt="Active" class="status-emoji" /> ↗</strong>
+              <strong>@GodofWaffle <img src="/emoji-link.webp" alt="Link" class="status-emoji" /> ↗</strong>
             </a>
             
-            <a href="https://modrinth.com/organization/1e1Iwimg" target="_blank" rel="noopener" class="contact-card">
+            <a href="https://modrinth.com/organization/1e1Iwimg" class="contact-card" data-url="https://modrinth.com/organization/1e1Iwimg" data-name="Modrinth Org" data-handle="1e1Iwimg">
               <div class="contact-card-left">
                 <img src="/modrinth-org.png" alt="Modrinth Organization" class="link-icon" />
                 <span>Modrinth Org</span>
               </div>
-              <strong>1e1Iwimg <img src="/emoji-activated.webp" alt="Active" class="status-emoji" /> ↗</strong>
+              <strong>1e1Iwimg <img src="/emoji-link.webp" alt="Link" class="status-emoji" /> ↗</strong>
             </a>
 
-            <a href="https://instagram.com/7ntie" target="_blank" rel="noopener" class="contact-card">
+            <a href="https://instagram.com/7ntie" class="contact-card" data-url="https://instagram.com/7ntie" data-name="Instagram" data-handle="@7ntie">
               <div class="contact-card-left">
                 <img src="/instagram-logo.png" alt="Instagram" class="link-icon" />
                 <span>Instagram</span>
               </div>
-              <strong>@7ntie (Deactivated) <img src="/emoji-deactivated.webp" alt="Deactivated" class="status-emoji" /> ↗</strong>
+              <strong>@7ntie <img src="/emoji-link.webp" alt="Link" class="status-emoji" /> ↗</strong>
             </a>
 
-            <a href="https://instagram.com/dr8ming" target="_blank" rel="noopener" class="contact-card">
+            <a href="https://instagram.com/dr8ming" class="contact-card" data-url="https://instagram.com/dr8ming" data-name="Instagram" data-handle="@dr8ming">
               <div class="contact-card-left">
                 <img src="/instagram-logo.png" alt="Instagram" class="link-icon" />
                 <span>Instagram</span>
               </div>
-              <strong>@dr8ming (Deactivated) <img src="/emoji-deactivated.webp" alt="Deactivated" class="status-emoji" /> ↗</strong>
+              <strong>@dr8ming <img src="/emoji-link.webp" alt="Link" class="status-emoji" /> ↗</strong>
             </a>
           </div>
 
@@ -388,6 +388,31 @@
 
     </div>
   </div>
+
+  <!-- External Link Visit Dialog Modal -->
+  <dialog class="visit-modal" id="visitModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-tag">// EXTERNAL REDIRECT</span>
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <h3 class="modal-title" id="modalTitle">Visit External Profile?</h3>
+        <p class="modal-text" id="modalText">You are about to leave this page and open an external platform in a new tab.</p>
+        <div class="modal-url-box" id="modalUrlBox">https://github.com/lunoxd</div>
+      </div>
+      <div class="modal-actions">
+        <button class="modal-btn modal-btn-cancel" id="modalCancelBtn" type="button">
+          <img src="/emoji-dialog-no.webp" alt="Cancel" class="modal-emoji" />
+          <span>Cancel</span>
+        </button>
+        <a href="#" target="_blank" rel="noopener" class="modal-btn modal-btn-confirm" id="modalConfirmBtn">
+          <img src="/emoji-dialog-yes.webp" alt="Visit" class="modal-emoji" />
+          <span>Visit ↗</span>
+        </a>
+      </div>
+    </div>
+  </dialog>
 
   <script type="module" src="./main.js"></script>
 </body>

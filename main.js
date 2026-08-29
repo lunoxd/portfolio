@@ -159,5 +159,63 @@ categoryPills.forEach((pill) => {
   });
 });
 
+// External Link Visit Modal
+const visitModal = document.getElementById('visitModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalText = document.getElementById('modalText');
+const modalUrlBox = document.getElementById('modalUrlBox');
+const modalConfirmBtn = document.getElementById('modalConfirmBtn');
+const modalCancelBtn = document.getElementById('modalCancelBtn');
+const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+document.querySelectorAll('.contact-card').forEach((card) => {
+  card.addEventListener('click', (e) => {
+    e.preventDefault();
+    const url = card.getAttribute('data-url');
+    const name = card.getAttribute('data-name');
+    const handle = card.getAttribute('data-handle');
+
+    if (visitModal && url) {
+      if (modalTitle) modalTitle.textContent = `Visit ${name}?`;
+      if (modalText) modalText.textContent = `Open ${handle} on ${name} in a new browser tab.`;
+      if (modalUrlBox) modalUrlBox.textContent = url;
+      if (modalConfirmBtn) modalConfirmBtn.href = url;
+      visitModal.showModal();
+    }
+  });
+});
+
+if (modalConfirmBtn) {
+  modalConfirmBtn.addEventListener('click', () => {
+    if (visitModal) visitModal.close();
+  });
+}
+
+if (modalCancelBtn) {
+  modalCancelBtn.addEventListener('click', () => {
+    if (visitModal) visitModal.close();
+  });
+}
+
+if (modalCloseBtn) {
+  modalCloseBtn.addEventListener('click', () => {
+    if (visitModal) visitModal.close();
+  });
+}
+
+if (visitModal) {
+  visitModal.addEventListener('click', (e) => {
+    const dialogDimensions = visitModal.getBoundingClientRect();
+    if (
+      e.clientX < dialogDimensions.left ||
+      e.clientX > dialogDimensions.right ||
+      e.clientY < dialogDimensions.top ||
+      e.clientY > dialogDimensions.bottom
+    ) {
+      visitModal.close();
+    }
+  });
+}
+
 // Initial UI
 updateSlideUI();
