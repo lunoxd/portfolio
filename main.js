@@ -171,35 +171,6 @@ if (logoBtn) {
   });
 }
 
-// Project Category Filter
-const categoryPills = document.querySelectorAll('.category-pill');
-const projectCards = document.querySelectorAll('.project-card');
-const emptyState = document.querySelector('.empty-projects-state');
-
-categoryPills.forEach((pill) => {
-  pill.addEventListener('click', (e) => {
-    e.stopPropagation();
-    categoryPills.forEach(p => p.classList.remove('active'));
-    pill.classList.add('active');
-
-    const filter = pill.getAttribute('data-filter');
-    let visibleCount = 0;
-
-    projectCards.forEach((card) => {
-      if (filter === 'all' || card.classList.contains(`is-${filter}`)) {
-        card.style.display = 'flex';
-        visibleCount++;
-      } else {
-        card.style.display = 'none';
-      }
-    });
-
-    if (emptyState) {
-      emptyState.style.display = visibleCount === 0 ? 'flex' : 'none';
-    }
-  });
-});
-
 // External Link Visit Modal
 const visitModal = document.getElementById('visitModal');
 const modalTitle = document.getElementById('modalTitle');
