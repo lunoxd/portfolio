@@ -1,6 +1,6 @@
 // Fullpage Slider Controller (Holy Hallow Style)
 let currentSlide = 0;
-const totalSlides = 5;
+const totalSlides = 4;
 let isAnimating = false;
 const animDuration = 650; // ms
 
@@ -170,12 +170,19 @@ const modalCloseBtn = document.getElementById('modalCloseBtn');
 
 document.querySelectorAll('.contact-card').forEach((card) => {
   card.addEventListener('click', (e) => {
-    e.preventDefault();
     const url = card.getAttribute('data-url');
     const name = card.getAttribute('data-name');
     const handle = card.getAttribute('data-handle');
 
-    if (visitModal && url) {
+    if (!url) return;
+
+    if (url.startsWith('/')) {
+      // Internal page like /personal.html
+      return;
+    }
+
+    e.preventDefault();
+    if (visitModal) {
       if (modalTitle) modalTitle.textContent = `Visit ${name}?`;
       if (modalText) modalText.textContent = `Open ${handle} on ${name} in a new browser tab.`;
       if (modalUrlBox) modalUrlBox.textContent = url;

@@ -789,6 +789,78 @@ html, body {
   color: var(--text-main);
 }
 
+/* Standalone Sub-page (e.g. personal.html) */
+body.standalone-body {
+  overflow-y: auto !important;
+  height: auto !important;
+  display: block;
+}
+
+.standalone-main {
+  padding: 6.5rem 0 4rem 0;
+}
+
+.personal-header {
+  margin-bottom: 2.5rem;
+  border-bottom: 2px solid var(--border-strong);
+  padding-bottom: 1.5rem;
+}
+
+.personal-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  margin-bottom: 0.5rem;
+}
+
+.personal-tagline {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.personal-section {
+  margin-bottom: 3.5rem;
+}
+
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.hobby-card {
+  border: 1.5px solid var(--border-strong);
+  background-color: var(--bg);
+  padding: 1.25rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hobby-icon {
+  font-size: 1.5rem;
+}
+
+.hobby-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.hobby-desc {
+  font-size: 0.85rem;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .hobbies-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Personal Life & Running Grid */
 .personal-intro {
   font-size: 0.95rem;
