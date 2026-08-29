@@ -1,6 +1,6 @@
 // Fullpage Slider Controller (Holy Hallow Style)
 let currentSlide = 0;
-const totalSlides = 4;
+const totalSlides = 5;
 let isAnimating = false;
 const animDuration = 650; // ms
 
@@ -274,6 +274,8 @@ function checkInitialHash() {
     goToSlide(2);
   } else if (hash === '#contact' || hash === '#links') {
     goToSlide(3);
+  } else if (hash === '#motto' || hash === '#quote' || hash === '#veni' || hash === '#philosophy') {
+    goToSlide(4);
   } else if (hash === '#overview' || hash === '#hero') {
     goToSlide(0);
   }

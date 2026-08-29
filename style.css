@@ -175,7 +175,7 @@ html, body {
   font-weight: 800;
 }
 
-/* Side Geometric Gamer Symbol Navigation Dots (✕, ○, □, △) */
+/* Side Gamer Symbol Navigation Dots (Direct Xbox/Gaming symbols with no box) */
 .side-dots-nav {
   position: fixed;
   right: 2rem;
@@ -184,7 +184,7 @@ html, body {
   z-index: 150;
   display: flex;
   flex-direction: column;
-  gap: 1.15rem;
+  gap: 1.35rem;
 }
 
 .dot-btn {
@@ -198,32 +198,30 @@ html, body {
   padding: 4px;
 }
 
-.gamer-symbol-box {
-  width: 28px;
-  height: 28px;
-  border: 1.5px solid var(--border-strong);
-  background-color: var(--bg);
-  color: var(--text-main);
+.gamer-symbol {
+  font-family: var(--font-mono);
+  font-weight: 900;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--text-muted);
+  user-select: none;
+  transition: transform 0.15s ease, color 0.15s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-mono);
-  font-weight: 900;
-  font-size: 0.95rem;
-  line-height: 1;
-  user-select: none;
-  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  width: 24px;
+  height: 24px;
 }
 
-.dot-btn:hover .gamer-symbol-box {
-  transform: scale(1.18);
-  background-color: var(--bg-subtle);
+.dot-btn:hover .gamer-symbol {
+  transform: scale(1.35);
+  color: var(--text-main);
 }
 
-/* Active Highlight on Gamer Symbol Box */
-.dot-btn.active .gamer-symbol-box {
-  background-color: var(--border-strong);
-  color: var(--bg);
+/* Active Highlight on Gamer Symbol */
+.dot-btn.active .gamer-symbol {
+  color: var(--badge-green);
+  transform: scale(1.45);
 }
 
 .dot-label {
@@ -1332,8 +1330,9 @@ body.standalone-body {
 /* Footer Inside Last Slide */
 .site-footer {
   padding: var(--space-lg) 0 0 0;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   border-top: 1px solid var(--border-subtle);
+  width: 100%;
 }
 
 .footer-inner {
@@ -1343,6 +1342,65 @@ body.standalone-body {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--text-muted);
+}
+
+/* Slide 5: VENI VIDI VICI Philosophy Slide */
+.quote-slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: calc(100vh - 120px);
+  gap: 1.25rem;
+  padding: 2rem 0 1rem 0;
+}
+
+.quote-tag {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--badge-green);
+  letter-spacing: 0.12em;
+}
+
+.quote-big-text {
+  font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  margin: 0.25rem 0;
+}
+
+.quote-translation {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.quote-details {
+  max-width: 620px;
+  margin-top: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quote-details p {
+  font-size: 1.05rem;
+  color: var(--text-body);
+  line-height: 1.7;
+}
+
+.quote-author {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-main);
 }
 
 /* ==========================================================================

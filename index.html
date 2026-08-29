@@ -20,7 +20,7 @@
   <header class="site-header">
     <div class="container">
       <div class="header-inner">
-        <button class="logo-btn" aria-label="Go to Overview">VENI VIDI VICI <img src="/emoji-name.webp" alt="" class="logo-emoji" /></button>
+        <button class="logo-btn" aria-label="Go to Overview">PORTFOLIO</button>
         <div class="header-right">
           <nav aria-label="Main Navigation">
             <ul class="nav-links">
@@ -28,6 +28,7 @@
               <li><button class="nav-btn" data-slide="1">02 // About</button></li>
               <li><button class="nav-btn" data-slide="2">03 // Projects</button></li>
               <li><button class="nav-btn" data-slide="3">04 // Links</button></li>
+              <li><button class="nav-btn" data-slide="4">05 // Motto</button></li>
               <li><a href="/personal.html" class="nav-btn" style="text-decoration: none; color: var(--text-main); font-weight: 700;">Life ↗</a></li>
             </ul>
           </nav>
@@ -40,23 +41,27 @@
     </div>
   </header>
 
-  <!-- Floating Side Geometric Gamer Symbols Navigation (✕, ○, □, △) -->
+  <!-- Floating Side Gamer Symbols Navigation (Direct Xbox / Game Symbols) -->
   <nav class="side-dots-nav" aria-label="Slide Indicator Dots">
     <button class="dot-btn active" data-slide="0" aria-label="Slide 01 // Overview">
-      <span class="gamer-symbol-box">✕</span>
+      <span class="gamer-symbol">✕</span>
       <span class="dot-label">01 // Overview</span>
     </button>
     <button class="dot-btn" data-slide="1" aria-label="Slide 02 // About">
-      <span class="gamer-symbol-box">○</span>
+      <span class="gamer-symbol">○</span>
       <span class="dot-label">02 // About</span>
     </button>
     <button class="dot-btn" data-slide="2" aria-label="Slide 03 // Projects">
-      <span class="gamer-symbol-box">□</span>
+      <span class="gamer-symbol">□</span>
       <span class="dot-label">03 // Projects</span>
     </button>
     <button class="dot-btn" data-slide="3" aria-label="Slide 04 // Links">
-      <span class="gamer-symbol-box">△</span>
+      <span class="gamer-symbol">△</span>
       <span class="dot-label">04 // Links</span>
+    </button>
+    <button class="dot-btn" data-slide="4" aria-label="Slide 05 // VENI VIDI VICI">
+      <span class="gamer-symbol">◇</span>
+      <span class="dot-label">05 // VENI VIDI VICI</span>
     </button>
   </nav>
 
@@ -420,14 +425,31 @@
               <strong>@dr8ming <img src="/emoji-link.webp" alt="Link" class="status-emoji" /> ↗</strong>
             </a>
           </div>
+        </div>
+      </section>
 
-          <!-- Footer Inside Last Slide -->
-          <footer class="site-footer">
-            <div class="footer-inner">
-              <div>&copy; 2026 Ashok Manikanta (Waffy)</div>
-              <div>KL University &bull; Game Developer</div>
+      <!-- ====================================================================
+           SLIDE 5: VENI VIDI VICI (PHILOSOPHY & MOTTO)
+           ==================================================================== -->
+      <section class="fp-slide" id="slide-quote">
+        <div class="container">
+          <div class="quote-slide-content">
+            <span class="quote-tag">// MOTTO &amp; CREED</span>
+            <h2 class="quote-big-text">VENI &bull; VIDI &bull; VICI</h2>
+            <p class="quote-translation">"I came, I saw, I conquered."</p>
+            <div class="quote-details">
+              <p>Driven by curiosity, relentless discipline in code, and pushing limits — whether compiling servers, optimizing 2D physics, or running 15K marathons.</p>
+              <div class="quote-author">— Ashok Manikanta (Waffy)</div>
             </div>
-          </footer>
+
+            <!-- Footer Inside Last Slide -->
+            <footer class="site-footer">
+              <div class="footer-inner">
+                <div>&copy; 2026 Ashok Manikanta (Waffy)</div>
+                <div>KL University &bull; Game Developer</div>
+              </div>
+            </footer>
+          </div>
         </div>
       </section>
 
@@ -477,6 +499,10 @@
       <button class="mobile-nav-item" data-slide="3" aria-label="Links">
         <span class="mobile-nav-symbol">△</span>
         <span>Links</span>
+      </button>
+      <button class="mobile-nav-item" data-slide="4" aria-label="Motto">
+        <span class="mobile-nav-symbol">◇</span>
+        <span>Motto</span>
       </button>
       <a href="/personal.html" class="mobile-nav-item" aria-label="Personal Life">
         <span class="mobile-nav-symbol">🏃</span>
