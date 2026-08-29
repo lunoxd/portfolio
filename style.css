@@ -358,7 +358,26 @@ html, body {
   font-weight: 700;
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: 0.65rem;
+}
+
+.section-title-emoji {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.btn-emoji {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+  flex-shrink: 0;
 }
 
 .section-title::after {
