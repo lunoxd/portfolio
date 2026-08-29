@@ -255,20 +255,20 @@ html, body {
 }
 
 .name-emoji {
-  width: 1.25em;
-  height: 1.25em;
+  width: 0.75em;
+  height: 0.75em;
   object-fit: contain;
   display: inline-block;
   vertical-align: middle;
 }
 
 .logo-emoji {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   object-fit: contain;
   display: inline-block;
   vertical-align: middle;
-  margin-left: 6px;
+  margin-left: 4px;
 }
 
 .hero-alias {
