@@ -619,6 +619,25 @@ html, body {
   color: var(--bg);
 }
 
+.pill-emoji {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.tag-emoji {
+  width: 13px;
+  height: 13px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+
 /* Category Hover Tooltip */
 .pill-tooltip {
   position: absolute;

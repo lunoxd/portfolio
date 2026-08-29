@@ -271,12 +271,19 @@
           <!-- Interactive Category Filter Buttons -->
           <div class="project-categories-bar">
             <button class="category-pill active" data-filter="all">All Works (2)</button>
-            <button class="category-pill" data-filter="featured">★ Featured (2)</button>
-            <button class="category-pill" data-filter="completed">✓ Completed (2)</button>
+            <button class="category-pill" data-filter="completed">
+              <img src="/emoji-done.webp" alt="" class="pill-emoji" /> Completed (2)
+            </button>
             <button class="category-pill" data-filter="ongoing">
-              ● Ongoing (0)
+              <img src="/emoji-ongoing.webp" alt="" class="pill-emoji" /> Ongoing (0)
               <span class="pill-tooltip">
                 <img src="/emoji-deactivated.webp" alt="Deactivated" class="status-emoji" /> Nothing here yet
+              </span>
+            </button>
+            <button class="category-pill" data-filter="upcoming">
+              <img src="/emoji-upcoming.webp" alt="" class="pill-emoji" /> Upcoming (0)
+              <span class="pill-tooltip">
+                <img src="/emoji-deactivated.webp" alt="Deactivated" class="status-emoji" /> In planning
               </span>
             </button>
           </div>
@@ -287,11 +294,11 @@
             <div class="empty-projects-state">
               <img src="/emoji-deactivated.webp" alt="Deactivated" class="empty-emoji" />
               <div class="empty-title">Nothing here yet</div>
-              <div class="empty-desc">// No ongoing projects currently in progress. Check back soon!</div>
+              <div class="empty-desc">// No projects in this category currently. Check back soon!</div>
             </div>
 
             <!-- Project 1: One Player Sleep+ -->
-            <article class="project-card is-featured is-completed">
+            <article class="project-card is-completed">
               <div class="project-top">
                 <h3 class="project-name">One Player Sleep+</h3>
                 <span class="project-badge badge-green">
@@ -308,8 +315,7 @@
                 <li><img src="/emoji-bullet.webp" alt="" class="bullet-emoji" />Supports Purpur, Spigot, Bukkit &amp; Paper ecosystems</li>
               </ul>
               <div class="project-tags">
-                <span class="tag tag-featured">★ Featured</span>
-                <span class="tag tag-completed">✓ Completed</span>
+                <span class="tag tag-completed"><img src="/emoji-done.webp" alt="" class="tag-emoji" /> Completed</span>
                 <span class="tag">Java</span>
                 <span class="tag">Paper API</span>
                 <span class="tag">Folia</span>
@@ -322,7 +328,7 @@
             </article>
 
             <!-- Project 2: Zeroro 2D Game -->
-            <article class="project-card is-featured is-completed">
+            <article class="project-card is-completed">
               <div class="project-top">
                 <h3 class="project-name">Zeroro 2D Game</h3>
                 <span class="project-badge">FIRST GAME • GODOT</span>
@@ -337,8 +343,7 @@
                 <li><img src="/emoji-bullet.webp" alt="" class="bullet-emoji" />Playable directly in the web browser via WebGL / WebAssembly</li>
               </ul>
               <div class="project-tags">
-                <span class="tag tag-featured">★ Featured</span>
-                <span class="tag tag-completed">✓ Completed</span>
+                <span class="tag tag-completed"><img src="/emoji-done.webp" alt="" class="tag-emoji" /> Completed</span>
                 <span class="tag">Godot Engine</span>
                 <span class="tag">2D Gameplay</span>
                 <span class="tag">Level Design</span>
