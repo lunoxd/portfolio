@@ -11,7 +11,7 @@ const mobileNavItems = document.querySelectorAll('.mobile-nav-item[data-slide]')
 const logoBtn = document.querySelector('.logo-btn');
 
 function updateSlideUI() {
-  if (sliderTrack && window.innerWidth > 900) {
+  if (sliderTrack) {
     sliderTrack.style.transform = `translateY(-${currentSlide * 100}vh)`;
   }
 
@@ -41,28 +41,16 @@ function updateSlideUI() {
 }
 
 mobileNavItems.forEach((item) => {
-  item.addEventListener('click', () => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
     const slideIndex = parseInt(item.getAttribute('data-slide'), 10);
     goToSlide(slideIndex);
   });
 });
 
-const slideIds = ['slide-overview', 'slide-about', 'slide-projects', 'slide-links'];
-
 function goToSlide(index) {
-  if (index < 0 || index >= totalSlides) return;
+  if (index < 0 || index >= totalSlides || isAnimating) return;
 
-  if (window.innerWidth <= 900) {
-    currentSlide = index;
-    updateSlideUI();
-    const targetEl = document.getElementById(slideIds[index]);
-    if (targetEl) {
-      targetEl.scrollIntoView({ behavior: 'smooth' });
-    }
-    return;
-  }
-
-  if (isAnimating) return;
   isAnimating = true;
   currentSlide = index;
   updateSlideUI();
@@ -72,21 +60,6 @@ function goToSlide(index) {
 }
 
 window.goToSlide = goToSlide;
-
-// Mobile scroll active state tracker
-window.addEventListener('scroll', () => {
-  if (window.innerWidth > 900) return;
-  slideIds.forEach((id, idx) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const rect = el.getBoundingClientRect();
-      if (rect.top <= 140 && rect.bottom >= 140) {
-        currentSlide = idx;
-        updateSlideUI();
-      }
-    }
-  });
-}, { passive: true });
 
 function nextSlide() {
   if (currentSlide < totalSlides - 1) {
@@ -103,7 +76,7 @@ function prevSlide() {
 // Wheel / Trackpad listener with debouncing
 let wheelTimeout = null;
 window.addEventListener('wheel', (e) => {
-  if (window.innerWidth <= 900 || isAnimating) return;
+  if (isAnimating) return;
   // If the active slide has internal scrollable content that isn't at the top/bottom:
   const activeSlide = document.querySelectorAll('.fp-slide')[currentSlide];
   if (activeSlide) {
@@ -122,23 +95,44 @@ window.addEventListener('wheel', (e) => {
   }
 }, { passive: true });
 
-// Touch Swipe Listener for mobile/tablets
+// Touch Swipe Listener for mobile/tablets with internal scroll awareness
 let touchStartY = 0;
-let touchEndY = 0;
+let touchStartX = 0;
 
 window.addEventListener('touchstart', (e) => {
-  touchStartY = e.changedTouches[0].screenY;
+  touchStartY = e.changedTouches[0].clientY;
+  touchStartX = e.changedTouches[0].clientX;
 }, { passive: true });
 
 window.addEventListener('touchend', (e) => {
   if (isAnimating) return;
-  touchEndY = e.changedTouches[0].screenY;
-  const diff = touchStartY - touchEndY;
-  if (Math.abs(diff) > 45) {
-    if (diff > 0) {
-      nextSlide();
+  const touchEndY = e.changedTouches[0].clientY;
+  const touchEndX = e.changedTouches[0].clientX;
+  const diffY = touchStartY - touchEndY;
+  const diffX = touchStartX - touchEndX;
+
+  // Only handle clear vertical gestures
+  if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 40) {
+    const activeSlide = document.querySelectorAll('.fp-slide')[currentSlide];
+    if (activeSlide) {
+      const isScrollable = activeSlide.scrollHeight > activeSlide.clientHeight + 10;
+      const isAtTop = activeSlide.scrollTop <= 5;
+      const isAtBottom = activeSlide.scrollTop + activeSlide.clientHeight >= activeSlide.scrollHeight - 5;
+
+      if (diffY > 0) {
+        // Swiping Up -> Next Slide
+        if (!isScrollable || isAtBottom) {
+          nextSlide();
+        }
+      } else {
+        // Swiping Down -> Prev Slide
+        if (!isScrollable || isAtTop) {
+          prevSlide();
+        }
+      }
     } else {
-      prevSlide();
+      if (diffY > 0) nextSlide();
+      else prevSlide();
     }
   }
 }, { passive: true });
