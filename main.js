@@ -10,9 +10,23 @@ const navBtns = document.querySelectorAll('.nav-btn');
 const mobileNavItems = document.querySelectorAll('.mobile-nav-item[data-slide]');
 const logoBtn = document.querySelector('.logo-btn');
 
+const slideLabels = [
+  '01 // Overview',
+  '02 // About',
+  '03 // Projects',
+  '04 // Links',
+  '05 // Motto'
+];
+
+const mobileCurrentSlideEl = document.getElementById('mobileCurrentSlide');
+
 function updateSlideUI() {
   if (sliderTrack) {
     sliderTrack.style.transform = `translateY(-${currentSlide * 100}vh)`;
+  }
+
+  if (mobileCurrentSlideEl && slideLabels[currentSlide]) {
+    mobileCurrentSlideEl.textContent = slideLabels[currentSlide];
   }
 
   dotBtns.forEach((dot, index) => {

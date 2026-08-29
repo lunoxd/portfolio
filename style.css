@@ -1733,11 +1733,36 @@ ul.desktop-only {
   flex-direction: column;
 }
 
+/* Mobile Current Slide Indicator */
+.mobile-current-slide {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 0.725rem;
+  font-weight: 800;
+  color: var(--badge-green);
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-strong);
+  padding: 0.22rem 0.55rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  user-select: none;
+  white-space: nowrap;
+}
+
 /* Mobile Responsive Engine (< 768px) */
 @media (max-width: 768px) {
   .desktop-only,
   .hide-on-mobile {
     display: none !important;
+  }
+
+  .site-header .desktop-nav {
+    display: none !important; /* Hide full 1 2 3 4 5 nav list on mobile */
+  }
+
+  .mobile-current-slide {
+    display: inline-flex; /* Show single active section indicator */
+    align-items: center;
   }
 
   .mobile-bottom-nav {
@@ -1751,6 +1776,11 @@ ul.desktop-only {
   .header-inner {
     height: 52px;
     padding: 0;
+    gap: 0.5rem;
+  }
+
+  .header-right {
+    gap: 0.5rem;
   }
 
   .fp-slide {
