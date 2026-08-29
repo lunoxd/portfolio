@@ -1741,11 +1741,7 @@ ul.desktop-only {
   }
 
   .mobile-bottom-nav {
-    display: block;
-  }
-
-  .site-header .nav-links {
-    display: none; /* Hide cramped top horizontal nav, use sleek bottom dock instead! */
+    display: none !important; /* Removed bottom buttons on mobile view */
   }
 
   .site-header {
@@ -1758,11 +1754,11 @@ ul.desktop-only {
   }
 
   .fp-slide {
-    padding: 4.25rem 0 calc(4.5rem + env(safe-area-inset-bottom)) 0;
+    padding: 4rem 0 2.5rem 0 !important;
   }
 
   .standalone-main {
-    padding: 4.5rem 0 calc(4.5rem + env(safe-area-inset-bottom)) 0;
+    padding: 4.5rem 0 2.5rem 0 !important;
   }
 }
 
