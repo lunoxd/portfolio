@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" class="standalone-html">
+<html lang="en" class="standalone-html" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Personal Life &amp; Hobbies — Ashok Manikanta</title>
   <meta name="description" content="Personal life, hobbies, marathon running logs, and daily creative discipline of Ashok Manikanta (Waffy)." />
   <link rel="icon" type="image/png" href="/github-logo.png" />
@@ -34,8 +34,8 @@
             </ul>
           </nav>
           <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Black/White Theme" type="button">
-            <span id="themeIcon">☾</span>
-            <span id="themeLabel">DARK</span>
+            <span id="themeIcon">☀</span>
+            <span id="themeLabel">LIGHT</span>
           </button>
         </div>
       </div>
@@ -156,6 +156,32 @@
 
   </main>
 
+  <!-- Mobile Bottom Navigation Dock (Thumb Ergonomics) -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Bottom Navigation">
+    <div class="mobile-nav-inner">
+      <a href="/" class="mobile-nav-item" aria-label="Overview">
+        <span class="mobile-nav-symbol">✕</span>
+        <span>Overview</span>
+      </a>
+      <a href="/#about" class="mobile-nav-item" aria-label="About">
+        <span class="mobile-nav-symbol">○</span>
+        <span>About</span>
+      </a>
+      <a href="/#projects" class="mobile-nav-item" aria-label="Projects">
+        <span class="mobile-nav-symbol">□</span>
+        <span>Projects</span>
+      </a>
+      <a href="/#contact" class="mobile-nav-item" aria-label="Links">
+        <span class="mobile-nav-symbol">△</span>
+        <span>Links</span>
+      </a>
+      <a href="/personal.html" class="mobile-nav-item active" aria-label="Personal Life">
+        <span class="mobile-nav-symbol">🏃</span>
+        <span>Life ↗</span>
+      </a>
+    </div>
+  </nav>
+
   <!-- Lightbox Modal for Full Image View -->
   <dialog class="lightbox-modal" id="lightboxModal">
     <div class="lightbox-box">
@@ -204,30 +230,30 @@
       });
     }
 
-    // Theme Toggle Logic
+    // Theme Toggle Logic (Dark Default / Light Option)
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     const themeIcon = document.getElementById('themeIcon');
     const themeLabel = document.getElementById('themeLabel');
 
     function applyTheme(theme) {
-      if (theme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        if (themeIcon) themeIcon.textContent = '☀';
-        if (themeLabel) themeLabel.textContent = 'LIGHT';
-      } else {
-        document.documentElement.removeAttribute('data-theme');
+      if (theme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
         if (themeIcon) themeIcon.textContent = '☾';
         if (themeLabel) themeLabel.textContent = 'DARK';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        if (themeIcon) themeIcon.textContent = '☀';
+        if (themeLabel) themeLabel.textContent = 'LIGHT';
       }
     }
 
-    const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
     applyTheme(savedTheme);
 
     if (themeToggleBtn) {
       themeToggleBtn.addEventListener('click', () => {
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        const newTheme = isDark ? 'light' : 'dark';
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        const newTheme = isLight ? 'dark' : 'light';
         applyTheme(newTheme);
         localStorage.setItem('portfolio-theme', newTheme);
       });

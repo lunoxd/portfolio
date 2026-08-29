@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Ashok Manikanta — Game Developer &amp; Programmer</title>
   <meta name="description" content="Portfolio of Ashok Manikanta (Waffy / GodofWaffle). Game developer and B.Tech CSE student at KL University (Class of 2028)." />
   <link rel="icon" type="image/png" href="/github-logo.png" />
@@ -32,8 +32,8 @@
             </ul>
           </nav>
           <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Black/White Theme" type="button">
-            <span id="themeIcon">☾</span>
-            <span id="themeLabel">DARK</span>
+            <span id="themeIcon">☀</span>
+            <span id="themeLabel">LIGHT</span>
           </button>
         </div>
       </div>
@@ -75,6 +75,13 @@
               <span class="hero-alias">(Waffy / @GodofWaffle)</span>
             </div>
 
+            <!-- Mobile Quick Stats Bar -->
+            <div class="mobile-hero-stats">
+              <span class="mobile-stat-pill">⚡ Game Developer</span>
+              <span class="mobile-stat-pill">📦 83.8K+ Mod Downloads</span>
+              <span class="mobile-stat-pill">🏃 15K Marathon Runner</span>
+            </div>
+
             <div class="intro-talk">
               <p class="intro-lead">
                 I'm Ashok, though most people across the internet know me as <mark class="hl">Waffy</mark>.
@@ -88,6 +95,16 @@
               <p>
                 Right now, I'm pursuing Computer Science at <mark class="hl-green">KL University (2028)</mark>, but my real classroom has always been curiosity. Whether it's building 2D worlds in Godot, crafting Minecraft tools in Java, or learning new engines, I create because it makes life more interesting. I want to build things that feel honest, run fast, and leave people with a smile.
               </p>
+            </div>
+
+            <!-- Mobile Quick Actions -->
+            <div class="mobile-quick-actions">
+              <button class="mobile-quick-btn mobile-quick-btn-primary" onclick="goToSlide(2)">
+                <span>View Projects ↓</span>
+              </button>
+              <button class="mobile-quick-btn" onclick="goToSlide(3)">
+                <span>Connect With Me ↓</span>
+              </button>
             </div>
           </div>
         </div>
@@ -436,6 +453,32 @@
       </div>
     </div>
   </dialog>
+
+  <!-- Mobile Bottom Navigation Dock (Thumb Ergonomics) -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <div class="mobile-nav-inner">
+      <button class="mobile-nav-item active" data-slide="0" aria-label="Overview">
+        <span class="mobile-nav-symbol">✕</span>
+        <span>Overview</span>
+      </button>
+      <button class="mobile-nav-item" data-slide="1" aria-label="About">
+        <span class="mobile-nav-symbol">○</span>
+        <span>About</span>
+      </button>
+      <button class="mobile-nav-item" data-slide="2" aria-label="Projects">
+        <span class="mobile-nav-symbol">□</span>
+        <span>Projects</span>
+      </button>
+      <button class="mobile-nav-item" data-slide="3" aria-label="Links">
+        <span class="mobile-nav-symbol">△</span>
+        <span>Links</span>
+      </button>
+      <a href="/personal.html" class="mobile-nav-item" aria-label="Personal Life">
+        <span class="mobile-nav-symbol">🏃</span>
+        <span>Life ↗</span>
+      </a>
+    </div>
+  </nav>
 
   <script type="module" src="./main.js"></script>
 </body>

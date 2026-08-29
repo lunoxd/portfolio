@@ -7,10 +7,11 @@ const animDuration = 650; // ms
 const sliderTrack = document.getElementById('slider-track');
 const dotBtns = document.querySelectorAll('.dot-btn');
 const navBtns = document.querySelectorAll('.nav-btn');
+const mobileNavItems = document.querySelectorAll('.mobile-nav-item[data-slide]');
 const logoBtn = document.querySelector('.logo-btn');
 
 function updateSlideUI() {
-  if (sliderTrack) {
+  if (sliderTrack && window.innerWidth > 900) {
     sliderTrack.style.transform = `translateY(-${currentSlide * 100}vh)`;
   }
 
@@ -29,7 +30,22 @@ function updateSlideUI() {
       btn.classList.remove('active');
     }
   });
+
+  mobileNavItems.forEach((item, index) => {
+    if (index === currentSlide) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
 }
+
+mobileNavItems.forEach((item) => {
+  item.addEventListener('click', () => {
+    const slideIndex = parseInt(item.getAttribute('data-slide'), 10);
+    goToSlide(slideIndex);
+  });
+});
 
 const slideIds = ['slide-overview', 'slide-about', 'slide-projects', 'slide-links'];
 
@@ -54,6 +70,8 @@ function goToSlide(index) {
     isAnimating = false;
   }, animDuration);
 }
+
+window.goToSlide = goToSlide;
 
 // Mobile scroll active state tracker
 window.addEventListener('scroll', () => {
@@ -270,30 +288,30 @@ function checkInitialHash() {
 window.addEventListener('load', checkInitialHash);
 window.addEventListener('hashchange', checkInitialHash);
 
-// Theme Toggle (Light / Dark Black Theme)
+// Theme Toggle (Dark Default / Light Option)
 const themeToggleBtn = document.getElementById('themeToggleBtn');
 const themeIcon = document.getElementById('themeIcon');
 const themeLabel = document.getElementById('themeLabel');
 
 function applyTheme(theme) {
-  if (theme === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    if (themeIcon) themeIcon.textContent = '☀';
-    if (themeLabel) themeLabel.textContent = 'LIGHT';
-  } else {
-    document.documentElement.removeAttribute('data-theme');
+  if (theme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
     if (themeIcon) themeIcon.textContent = '☾';
     if (themeLabel) themeLabel.textContent = 'DARK';
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    if (themeIcon) themeIcon.textContent = '☀';
+    if (themeLabel) themeLabel.textContent = 'LIGHT';
   }
 }
 
-const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
+const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
 applyTheme(savedTheme);
 
 if (themeToggleBtn) {
   themeToggleBtn.addEventListener('click', () => {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const newTheme = isDark ? 'light' : 'dark';
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const newTheme = isLight ? 'dark' : 'light';
     applyTheme(newTheme);
     localStorage.setItem('portfolio-theme', newTheme);
   });
