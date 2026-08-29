@@ -62,9 +62,26 @@ mobileNavItems.forEach((item) => {
   });
 });
 
-function goToSlide(index) {
-  if (index < 0 || index >= totalSlides || isAnimating) return;
+const slideIds = ['slide-overview', 'slide-about', 'slide-projects', 'slide-links', 'slide-quote'];
 
+function goToSlide(index) {
+  if (index < 0 || index >= totalSlides) return;
+
+  if (window.innerWidth <= 768) {
+    // Mobile: Smooth Native Scroll to Section
+    const targetEl = document.getElementById(slideIds[index]);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth' });
+    }
+    currentSlide = index;
+    if (mobileCurrentSlideEl && slideLabels[currentSlide]) {
+      mobileCurrentSlideEl.textContent = slideLabels[currentSlide];
+    }
+    return;
+  }
+
+  // Desktop: Fullpage Slider Transform
+  if (isAnimating) return;
   isAnimating = true;
   currentSlide = index;
   updateSlideUI();
@@ -76,28 +93,30 @@ function goToSlide(index) {
 window.goToSlide = goToSlide;
 
 function nextSlide() {
+  if (window.innerWidth <= 768) return;
   if (currentSlide < totalSlides - 1) {
     goToSlide(currentSlide + 1);
   }
 }
 
 function prevSlide() {
+  if (window.innerWidth <= 768) return;
   if (currentSlide > 0) {
     goToSlide(currentSlide - 1);
   }
 }
 
-// Wheel / Trackpad listener with debouncing
-let wheelTimeout = null;
+// Wheel / Trackpad listener (Desktop Only)
 window.addEventListener('wheel', (e) => {
+  if (window.innerWidth <= 768) return; // Native scroll on mobile
   if (isAnimating) return;
-  // If the active slide has internal scrollable content that isn't at the top/bottom:
+
   const activeSlide = document.querySelectorAll('.fp-slide')[currentSlide];
   if (activeSlide) {
     const isAtTop = activeSlide.scrollTop <= 5;
     const isAtBottom = activeSlide.scrollTop + activeSlide.clientHeight >= activeSlide.scrollHeight - 5;
-    if (e.deltaY > 0 && !isAtBottom) return; // Allow internal scrolling down
-    if (e.deltaY < 0 && !isAtTop) return; // Allow internal scrolling up
+    if (e.deltaY > 0 && !isAtBottom) return;
+    if (e.deltaY < 0 && !isAtTop) return;
   }
 
   if (Math.abs(e.deltaY) > 25) {
@@ -109,50 +128,9 @@ window.addEventListener('wheel', (e) => {
   }
 }, { passive: true });
 
-// Touch Swipe Listener for mobile/tablets with internal scroll awareness
-let touchStartY = 0;
-let touchStartX = 0;
-
-window.addEventListener('touchstart', (e) => {
-  touchStartY = e.changedTouches[0].clientY;
-  touchStartX = e.changedTouches[0].clientX;
-}, { passive: true });
-
-window.addEventListener('touchend', (e) => {
-  if (isAnimating) return;
-  const touchEndY = e.changedTouches[0].clientY;
-  const touchEndX = e.changedTouches[0].clientX;
-  const diffY = touchStartY - touchEndY;
-  const diffX = touchStartX - touchEndX;
-
-  // Only handle clear vertical gestures
-  if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 40) {
-    const activeSlide = document.querySelectorAll('.fp-slide')[currentSlide];
-    if (activeSlide) {
-      const isScrollable = activeSlide.scrollHeight > activeSlide.clientHeight + 10;
-      const isAtTop = activeSlide.scrollTop <= 5;
-      const isAtBottom = activeSlide.scrollTop + activeSlide.clientHeight >= activeSlide.scrollHeight - 5;
-
-      if (diffY > 0) {
-        // Swiping Up -> Next Slide
-        if (!isScrollable || isAtBottom) {
-          nextSlide();
-        }
-      } else {
-        // Swiping Down -> Prev Slide
-        if (!isScrollable || isAtTop) {
-          prevSlide();
-        }
-      }
-    } else {
-      if (diffY > 0) nextSlide();
-      else prevSlide();
-    }
-  }
-}, { passive: true });
-
-// Keyboard navigation
+// Keyboard navigation (Desktop Only)
 window.addEventListener('keydown', (e) => {
+  if (window.innerWidth <= 768) return;
   if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
     e.preventDefault();
     nextSlide();
@@ -161,6 +139,32 @@ window.addEventListener('keydown', (e) => {
     prevSlide();
   }
 });
+
+// Mobile Scroll Observer for Header Active Badge
+if ('IntersectionObserver' in window) {
+  const slideObserver = new IntersectionObserver((entries) => {
+    if (window.innerWidth > 768) return;
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const slideIdx = slideIds.indexOf(entry.target.id);
+        if (slideIdx !== -1) {
+          currentSlide = slideIdx;
+          if (mobileCurrentSlideEl && slideLabels[slideIdx]) {
+            mobileCurrentSlideEl.textContent = slideLabels[slideIdx];
+          }
+        }
+      }
+    });
+  }, {
+    threshold: 0.35,
+    rootMargin: "-10% 0px -40% 0px"
+  });
+
+  slideIds.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) slideObserver.observe(el);
+  });
+}
 
 // Dot Buttons Click
 dotBtns.forEach((dot) => {

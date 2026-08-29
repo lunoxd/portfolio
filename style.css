@@ -1533,14 +1533,15 @@ ul.desktop-only {
   }
 }
 
-/* Mobile Fullpage Slide Engine (< 768px - iPhone 14/15/16/17 Pro Max & Android) */
+/* Mobile Fullpage Slide Engine (< 768px - Normal Smooth Scrolling Website) */
 @media (max-width: 768px) {
   html, body {
-    height: 100% !important;
-    height: 100dvh !important;
-    min-height: -webkit-fill-available;
-    overflow: hidden !important;
-    touch-action: pan-y;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    touch-action: auto !important;
+    scroll-behavior: smooth;
   }
 
   .desktop-only,
@@ -1548,11 +1549,11 @@ ul.desktop-only {
     display: none !important;
   }
 
-  /* Header on Mobile with Dynamic Island safe area */
+  /* Sticky Header on Mobile with Dynamic Island safe area */
   .site-header {
     height: calc(52px + env(safe-area-inset-top, 0px));
     padding-top: env(safe-area-inset-top, 0px);
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -1587,51 +1588,45 @@ ul.desktop-only {
     display: none !important;
   }
 
-  /* Slider Engine */
+  /* Slider Engine - Natural Flow on Mobile */
   .slider-wrapper {
-    height: 100% !important;
-    height: 100dvh !important;
-    min-height: -webkit-fill-available;
-    width: 100%;
-    overflow: hidden !important;
-    position: relative;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    position: static !important;
   }
 
   .slider-track {
-    height: 100% !important;
-    width: 100%;
-    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    height: auto !important;
+    transform: none !important;
+    transition: none !important;
   }
 
-  /* Slide Viewport with Flex Centering */
+  /* Slide Sections - Natural Flow with Smooth Scroll */
   .fp-slide {
-    height: 100% !important;
-    height: 100dvh !important;
-    min-height: -webkit-fill-available;
-    width: 100%;
-    box-sizing: border-box;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
-    padding-top: calc(58px + env(safe-area-inset-top, 0px)) !important;
-    padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 0px)) !important;
-    padding-left: max(1.15rem, env(safe-area-inset-left, 0px)) !important;
-    padding-right: max(1.15rem, env(safe-area-inset-right, 0px)) !important;
-    border-bottom: none !important;
-    scrollbar-width: none !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    display: block !important;
+    padding: 2.75rem 0 !important;
+    border-bottom: 2px solid var(--border-strong) !important;
+    scroll-margin-top: calc(56px + env(safe-area-inset-top, 0px));
   }
 
-  .fp-slide::-webkit-scrollbar {
-    display: none !important;
+  .fp-slide:first-child {
+    padding-top: 2rem !important;
+  }
+
+  .fp-slide:last-child {
+    border-bottom: none !important;
+    padding-bottom: max(3rem, env(safe-area-inset-bottom, 0px)) !important;
   }
 
   .fp-slide > .container {
-    margin: auto 0;
+    margin: 0 !important;
     width: 100%;
     max-width: 100%;
-    padding: 0;
+    padding: 0 1.25rem !important;
     box-sizing: border-box;
   }
 
@@ -1771,7 +1766,7 @@ ul.desktop-only {
   }
 
   .project-card {
-    padding: 0.75rem 0.85rem !important;
+    padding: 0.85rem !important;
     gap: 0.35rem;
     box-sizing: border-box;
   }
@@ -1786,14 +1781,14 @@ ul.desktop-only {
   }
 
   .project-img {
-    max-height: clamp(100px, 17vh, 125px) !important;
+    max-height: 160px !important;
     margin-bottom: 0.35rem !important;
     object-fit: cover;
   }
 
   .project-desc {
-    font-size: 0.785rem !important;
-    line-height: 1.4 !important;
+    font-size: 0.8rem !important;
+    line-height: 1.45 !important;
     margin-bottom: 0.35rem !important;
   }
 
@@ -1803,8 +1798,8 @@ ul.desktop-only {
   }
 
   .project-action {
-    padding: 0.35rem 0.75rem !important;
-    font-size: 0.75rem !important;
+    padding: 0.4rem 0.85rem !important;
+    font-size: 0.775rem !important;
   }
 
   /* Slide 4: Links (Sleek 1-Column List on Mobile) */
@@ -1814,9 +1809,9 @@ ul.desktop-only {
   }
 
   .contact-card {
-    padding: 0.55rem 0.85rem;
+    padding: 0.6rem 0.85rem;
     font-size: 0.825rem;
-    min-height: 44px;
+    min-height: 46px;
     gap: 0.5rem;
   }
 
@@ -1846,7 +1841,7 @@ ul.desktop-only {
 
   /* Personal Page on Mobile */
   .standalone-main {
-    padding: calc(56px + env(safe-area-inset-top, 0px)) 1rem max(2rem, env(safe-area-inset-bottom, 0px)) 1rem !important;
+    padding: 2rem 1.25rem max(2.5rem, env(safe-area-inset-bottom, 0px)) 1.25rem !important;
   }
 
   .running-grid,
@@ -1856,7 +1851,7 @@ ul.desktop-only {
   }
 
   .running-img-wrapper {
-    max-height: 260px;
+    max-height: 280px;
   }
 }
 
