@@ -42,18 +42,18 @@
 }
 
 [data-theme="dark"] {
-  /* High-Contrast Sharp Black Palette */
-  --bg: #000000;
-  --text-main: #ffffff;
-  --text-body: #d4d4d4;
-  --text-muted: #a3a3a3;
+  /* Discord Dark Theme Palette */
+  --bg: #313338;
+  --text-main: #f2f3f5;
+  --text-body: #dbdee1;
+  --text-muted: #949ba4;
   --border-strong: #ffffff;
-  --border-subtle: #262626;
-  --bg-subtle: #121212;
-  --badge-green: #22c55e;
-  --header-bg: rgba(0, 0, 0, 0.92);
-  --shadow-color: #ffffff;
-  --card-bg: #0d0d0d;
+  --border-subtle: #3f4147;
+  --bg-subtle: #2b2d31;
+  --badge-green: #57f287;
+  --header-bg: rgba(43, 45, 49, 0.95);
+  --shadow-color: #1e1f22;
+  --card-bg: #2b2d31;
 }
 
 html, body {
@@ -167,7 +167,7 @@ html, body {
   font-weight: 800;
 }
 
-/* Side Square Navigation Dots (Matching Holy Hallow / Uploaded Screenshot) */
+/* Side Geometric Gamer Symbol Navigation Dots (✕, ○, □, △) */
 .side-dots-nav {
   position: fixed;
   right: 2rem;
@@ -176,7 +176,7 @@ html, body {
   z-index: 150;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.15rem;
 }
 
 .dot-btn {
@@ -190,36 +190,32 @@ html, body {
   padding: 4px;
 }
 
-.square-box {
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--border-strong);
+.gamer-symbol-box {
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid var(--border-strong);
   background-color: var(--bg);
+  color: var(--text-main);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.15s ease, background-color 0.15s ease;
+  font-family: var(--font-mono);
+  font-weight: 900;
+  font-size: 0.95rem;
+  line-height: 1;
+  user-select: none;
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
 }
 
-.square-box::after {
-  content: "";
-  width: 8px;
-  height: 8px;
-  background-color: transparent;
-  transition: background-color 0.15s ease;
+.dot-btn:hover .gamer-symbol-box {
+  transform: scale(1.18);
+  background-color: var(--bg-subtle);
 }
 
-.dot-btn:hover .square-box {
-  transform: scale(1.15);
-}
-
-/* Active Highlight on Square Box */
-.dot-btn.active .square-box {
+/* Active Highlight on Gamer Symbol Box */
+.dot-btn.active .gamer-symbol-box {
   background-color: var(--border-strong);
-}
-
-.dot-btn.active .square-box::after {
-  background-color: var(--bg);
+  color: var(--bg);
 }
 
 .dot-label {
