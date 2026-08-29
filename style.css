@@ -1723,18 +1723,25 @@ body.standalone-body {
   color: var(--bg);
 }
 
+/* Responsive Visibility Utilities */
+.desktop-only {
+  display: block;
+}
+
+ul.desktop-only {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Mobile Responsive Engine (< 768px) */
 @media (max-width: 768px) {
+  .desktop-only,
+  .hide-on-mobile {
+    display: none !important;
+  }
+
   .mobile-bottom-nav {
     display: block;
-  }
-
-  .mobile-hero-stats {
-    display: flex;
-  }
-
-  .mobile-quick-actions {
-    display: flex;
   }
 
   .site-header .nav-links {
