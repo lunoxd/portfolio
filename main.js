@@ -1,6 +1,6 @@
 // Fullpage Slider Controller (Holy Hallow Style)
 let currentSlide = 0;
-const totalSlides = 4;
+const totalSlides = 5;
 let isAnimating = false;
 const animDuration = 650; // ms
 
