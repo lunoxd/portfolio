@@ -185,26 +185,107 @@ if (logoBtn) {
   });
 }
 
-// Project Category Filter (Selectable for available works only, excluding 0)
+// Mobile Project Paging & Category Filter
+let currentMobileProjectIndex = 0;
 const filterButtons = document.querySelectorAll('button.category-pill');
-const projectCards = document.querySelectorAll('.project-card');
+const projectCards = Array.from(document.querySelectorAll('.project-card'));
+const emptyStateEl = document.querySelector('.empty-projects-state');
+const mobileProjectNavEl = document.getElementById('mobileProjectNav');
+const projectNavCounterEl = document.getElementById('projectNavCounter');
+const projectPrevBtn = document.getElementById('projectPrevBtn');
+const projectNextBtn = document.getElementById('projectNextBtn');
+
+function updateMobileProjectView() {
+  const activeFilterBtn = document.querySelector('button.category-pill.active');
+  const activeFilter = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : 'all';
+
+  const matchingCards = projectCards.filter((card) => {
+    return activeFilter === 'all' || card.classList.contains(`is-${activeFilter}`);
+  });
+
+  const totalMatching = matchingCards.length;
+
+  if (window.innerWidth > 768) {
+    // Desktop View: Show all matching cards in multi-column grid
+    projectCards.forEach((card) => {
+      card.style.display = (activeFilter === 'all' || card.classList.contains(`is-${activeFilter}`)) ? 'flex' : 'none';
+    });
+    if (emptyStateEl) emptyStateEl.style.display = totalMatching === 0 ? 'flex' : 'none';
+    if (mobileProjectNavEl) mobileProjectNavEl.style.display = 'none';
+    return;
+  }
+
+  // Mobile View: Show only ONE project at a time with emoji buttons
+  if (totalMatching === 0) {
+    projectCards.forEach(c => c.style.display = 'none');
+    if (emptyStateEl) emptyStateEl.style.display = 'flex';
+    if (mobileProjectNavEl) mobileProjectNavEl.style.display = 'none';
+    return;
+  }
+
+  if (emptyStateEl) emptyStateEl.style.display = 'none';
+  if (mobileProjectNavEl) mobileProjectNavEl.style.display = 'flex';
+
+  if (currentMobileProjectIndex >= totalMatching) {
+    currentMobileProjectIndex = 0;
+  }
+
+  // Hide all cards, show only the current one
+  projectCards.forEach(c => c.style.display = 'none');
+  if (matchingCards[currentMobileProjectIndex]) {
+    matchingCards[currentMobileProjectIndex].style.display = 'flex';
+  }
+
+  if (projectNavCounterEl) {
+    projectNavCounterEl.textContent = `0${currentMobileProjectIndex + 1} / 0${totalMatching}`;
+  }
+
+  if (projectPrevBtn) {
+    projectPrevBtn.disabled = currentMobileProjectIndex === 0;
+    projectPrevBtn.style.opacity = currentMobileProjectIndex === 0 ? '0.35' : '1';
+  }
+
+  if (projectNextBtn) {
+    projectNextBtn.disabled = currentMobileProjectIndex === totalMatching - 1;
+    projectNextBtn.style.opacity = currentMobileProjectIndex === totalMatching - 1 ? '0.35' : '1';
+  }
+}
+
+if (projectPrevBtn) {
+  projectPrevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (currentMobileProjectIndex > 0) {
+      currentMobileProjectIndex--;
+      updateMobileProjectView();
+    }
+  });
+}
+
+if (projectNextBtn) {
+  projectNextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const activeFilterBtn = document.querySelector('button.category-pill.active');
+    const activeFilter = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : 'all';
+    const matchingCards = projectCards.filter(c => activeFilter === 'all' || c.classList.contains(`is-${activeFilter}`));
+    if (currentMobileProjectIndex < matchingCards.length - 1) {
+      currentMobileProjectIndex++;
+      updateMobileProjectView();
+    }
+  });
+}
 
 filterButtons.forEach((btn) => {
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
     filterButtons.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-
-    const filter = btn.getAttribute('data-filter');
-    projectCards.forEach((card) => {
-      if (filter === 'all' || card.classList.contains(`is-${filter}`)) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
-    });
+    currentMobileProjectIndex = 0;
+    updateMobileProjectView();
   });
 });
+
+window.addEventListener('resize', updateMobileProjectView);
+updateMobileProjectView();
 
 // External Link Visit Modal
 const visitModal = document.getElementById('visitModal');

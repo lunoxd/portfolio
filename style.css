@@ -1751,6 +1751,48 @@ ul.desktop-only {
   white-space: nowrap;
 }
 
+/* Mobile Single Project Navigation */
+.mobile-project-nav {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-subtle);
+  border: 1.5px solid var(--border-strong);
+  padding: 0.35rem 0.65rem;
+  margin-bottom: 0.65rem;
+}
+
+.project-nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: transform 0.1s ease, opacity 0.15s ease;
+  user-select: none;
+}
+
+.project-nav-btn:active {
+  transform: scale(0.9);
+}
+
+.project-nav-emoji {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  display: block;
+}
+
+.project-nav-counter {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: 0.08em;
+}
+
 /* Mobile Responsive Engine (< 768px) */
 @media (max-width: 768px) {
   .desktop-only,
@@ -1765,6 +1807,42 @@ ul.desktop-only {
   .mobile-current-slide {
     display: inline-flex; /* Show single active section indicator */
     align-items: center;
+  }
+
+  .mobile-project-nav {
+    display: flex; /* Show emoji-driven single project pager */
+  }
+
+  .project-list {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  .project-card {
+    padding: 0.7rem 0.8rem !important;
+    gap: 0.3rem;
+  }
+
+  .project-img {
+    max-height: 115px !important;
+    margin-bottom: 0.35rem !important;
+    object-fit: cover;
+  }
+
+  .project-desc {
+    font-size: 0.785rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .project-tags {
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.45rem !important;
+  }
+
+  .project-action {
+    padding: 0.35rem 0.7rem !important;
+    font-size: 0.75rem !important;
   }
 
   .mobile-bottom-nav {
@@ -1786,7 +1864,7 @@ ul.desktop-only {
   }
 
   .fp-slide {
-    padding: 4rem 0 2.5rem 0 !important;
+    padding: 3.8rem 0 2rem 0 !important;
   }
 
   .standalone-main {
