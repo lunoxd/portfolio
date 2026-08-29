@@ -1807,15 +1807,26 @@ ul.desktop-only {
     font-size: 0.75rem !important;
   }
 
-  /* Slide 4: Links */
+  /* Slide 4: Links (Sleek 1-Column List on Mobile) */
   .contact-links {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
   }
 
   .contact-card {
-    padding: 0.65rem 0.75rem;
-    font-size: 0.8rem;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.825rem;
+    min-height: 44px;
+    gap: 0.5rem;
+  }
+
+  .contact-card-left {
+    gap: 0.65rem;
+    font-size: 0.825rem;
+  }
+
+  .contact-card strong {
+    font-size: 0.775rem;
   }
 
   .link-icon {
