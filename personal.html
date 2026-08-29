@@ -23,15 +23,21 @@
         <a href="/" class="logo-btn" style="text-decoration:none;">
           ASHOK MANIKANTA <img src="/emoji-name.webp" alt="" class="logo-emoji" />
         </a>
-        <nav aria-label="Main Navigation">
-          <ul class="nav-links">
-            <li><a href="/" class="nav-btn" style="text-decoration:none;">← Portfolio</a></li>
-            <li><a href="/#about" class="nav-btn" style="text-decoration:none;">About</a></li>
-            <li><a href="/#projects" class="nav-btn" style="text-decoration:none;">Projects</a></li>
-            <li><a href="/#contact" class="nav-btn" style="text-decoration:none;">Links</a></li>
-            <li><a href="/personal.html" class="nav-btn active" style="text-decoration:none;">Life ↗</a></li>
-          </ul>
-        </nav>
+        <div class="header-right">
+          <nav aria-label="Main Navigation">
+            <ul class="nav-links">
+              <li><a href="/" class="nav-btn" style="text-decoration:none;">← Portfolio</a></li>
+              <li><a href="/#about" class="nav-btn" style="text-decoration:none;">About</a></li>
+              <li><a href="/#projects" class="nav-btn" style="text-decoration:none;">Projects</a></li>
+              <li><a href="/#contact" class="nav-btn" style="text-decoration:none;">Links</a></li>
+              <li><a href="/personal.html" class="nav-btn active" style="text-decoration:none;">Life ↗</a></li>
+            </ul>
+          </nav>
+          <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Black/White Theme" type="button">
+            <span id="themeIcon">☾</span>
+            <span id="themeLabel">DARK</span>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -195,6 +201,35 @@
         ) {
           lightboxModal.close();
         }
+      });
+    }
+
+    // Theme Toggle Logic
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeLabel = document.getElementById('themeLabel');
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        if (themeIcon) themeIcon.textContent = '☀';
+        if (themeLabel) themeLabel.textContent = 'LIGHT';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        if (themeIcon) themeIcon.textContent = '☾';
+        if (themeLabel) themeLabel.textContent = 'DARK';
+      }
+    }
+
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
+    applyTheme(savedTheme);
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const newTheme = isDark ? 'light' : 'dark';
+        applyTheme(newTheme);
+        localStorage.setItem('portfolio-theme', newTheme);
       });
     }
   </script>

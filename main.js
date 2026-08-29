@@ -241,6 +241,35 @@ function checkInitialHash() {
 window.addEventListener('load', checkInitialHash);
 window.addEventListener('hashchange', checkInitialHash);
 
+// Theme Toggle (Light / Dark Black Theme)
+const themeToggleBtn = document.getElementById('themeToggleBtn');
+const themeIcon = document.getElementById('themeIcon');
+const themeLabel = document.getElementById('themeLabel');
+
+function applyTheme(theme) {
+  if (theme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    if (themeIcon) themeIcon.textContent = '☀';
+    if (themeLabel) themeLabel.textContent = 'LIGHT';
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    if (themeIcon) themeIcon.textContent = '☾';
+    if (themeLabel) themeLabel.textContent = 'DARK';
+  }
+}
+
+const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
+applyTheme(savedTheme);
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const newTheme = isDark ? 'light' : 'dark';
+    applyTheme(newTheme);
+    localStorage.setItem('portfolio-theme', newTheme);
+  });
+}
+
 // Initial UI
 updateSlideUI();
 checkInitialHash();

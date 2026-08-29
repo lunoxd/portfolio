@@ -11,7 +11,7 @@
 }
 
 :root {
-  /* Color Palette */
+  /* Color Palette (Light Default) */
   --bg: #ffffff;
   --text-main: #111111;
   --text-body: #333333;
@@ -20,6 +20,9 @@
   --border-subtle: #e5e5e5;
   --bg-subtle: #f8f8f8;
   --badge-green: #16a34a;
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --shadow-color: #000000;
+  --card-bg: #ffffff;
 
   /* Typography */
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -38,6 +41,21 @@
   --max-width: 1360px;
 }
 
+[data-theme="dark"] {
+  /* High-Contrast Sharp Black Palette */
+  --bg: #000000;
+  --text-main: #ffffff;
+  --text-body: #d4d4d4;
+  --text-muted: #a3a3a3;
+  --border-strong: #ffffff;
+  --border-subtle: #262626;
+  --bg-subtle: #121212;
+  --badge-green: #22c55e;
+  --header-bg: rgba(0, 0, 0, 0.92);
+  --shadow-color: #ffffff;
+  --card-bg: #0d0d0d;
+}
+
 html, body {
   height: 100%;
   overflow: hidden; /* Fullpage slide viewport */
@@ -47,6 +65,7 @@ html, body {
   line-height: 1.6;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 /* Container */
@@ -63,10 +82,11 @@ html, body {
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: var(--header-bg);
   backdrop-filter: blur(8px);
   border-bottom: 2px solid var(--border-strong);
   z-index: 100;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .header-inner {
@@ -74,6 +94,34 @@ html, body {
   justify-content: space-between;
   align-items: center;
   height: 64px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: 1.5px solid var(--border-strong);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.65rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  letter-spacing: 0.04em;
+  transition: background-color 0.1s ease, color 0.1s ease;
+  user-select: none;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--border-strong);
+  color: var(--bg);
 }
 
 .logo-btn {
@@ -493,9 +541,9 @@ html, body {
   bottom: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
-  background-color: #ffffff;
-  color: #111111;
-  border: 1px solid #000000;
+  background-color: var(--bg);
+  color: var(--text-main);
+  border: 1px solid var(--border-strong);
   padding: 0.5rem 0.75rem;
   width: max-content;
   max-width: 230px;
@@ -504,7 +552,7 @@ html, body {
   opacity: 0;
   visibility: hidden;
   z-index: 120;
-  box-shadow: 2px 2px 0px #000000;
+  box-shadow: 3px 3px 0px var(--shadow-color);
 }
 
 .skill-tooltip strong {
@@ -512,7 +560,7 @@ html, body {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   margin-bottom: 2px;
-  color: #000000;
+  color: var(--text-main);
   text-transform: uppercase;
 }
 
@@ -520,7 +568,7 @@ html, body {
   display: block;
   font-family: var(--font-sans);
   font-size: 0.75rem;
-  color: #444444;
+  color: var(--text-body);
   line-height: 1.35;
 }
 
@@ -586,7 +634,7 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  box-shadow: 2px 2px 0px #000000;
+  box-shadow: 3px 3px 0px var(--shadow-color);
   transition: opacity 0.15s ease;
   z-index: 20;
 }
@@ -1014,9 +1062,9 @@ body.standalone-body {
 }
 
 .lightbox-box {
-  background-color: #000000;
-  border: 2px solid #ffffff;
-  box-shadow: 8px 8px 0px #ffffff;
+  background-color: var(--bg);
+  border: 2px solid var(--border-strong);
+  box-shadow: 8px 8px 0px var(--shadow-color);
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -1026,8 +1074,8 @@ body.standalone-body {
 
 .lightbox-close {
   align-self: flex-end;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: var(--text-main);
+  border: 1px solid var(--border-strong);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   padding: 4px 8px;
@@ -1036,8 +1084,8 @@ body.standalone-body {
 }
 
 .lightbox-close:hover {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--border-strong);
+  color: var(--bg);
 }
 
 .lightbox-full-img {
@@ -1050,7 +1098,7 @@ body.standalone-body {
 .lightbox-caption {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: #cccccc;
+  color: var(--text-muted);
   text-align: center;
 }
 
