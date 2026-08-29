@@ -198,14 +198,35 @@ html, body {
   padding: 4px;
 }
 
+/* Natural Gaming Controller Colors */
+.sym-blue {
+  color: #3b82f6;
+}
+
+.sym-red {
+  color: #ef4444;
+}
+
+.sym-pink {
+  color: #ec4899;
+}
+
+.sym-green {
+  color: #22c55e;
+}
+
+.sym-gold {
+  color: #f59e0b;
+}
+
 .gamer-symbol {
   font-family: var(--font-mono);
   font-weight: 900;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   line-height: 1;
-  color: var(--text-muted);
+  opacity: 0.65;
   user-select: none;
-  transition: transform 0.15s ease, color 0.15s ease;
+  transition: transform 0.15s ease, opacity 0.15s ease, text-shadow 0.15s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -215,13 +236,15 @@ html, body {
 
 .dot-btn:hover .gamer-symbol {
   transform: scale(1.35);
-  color: var(--text-main);
+  opacity: 1;
+  text-shadow: 0 0 10px currentColor;
 }
 
-/* Active Highlight on Gamer Symbol */
+/* Active Highlight on Gamer Symbol with natural gaming glow */
 .dot-btn.active .gamer-symbol {
-  color: var(--badge-green);
-  transform: scale(1.45);
+  opacity: 1;
+  transform: scale(1.5);
+  text-shadow: 0 0 12px currentColor, 0 0 24px currentColor;
 }
 
 .dot-label {
