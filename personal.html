@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="standalone-html">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,6 +29,7 @@
             <li><a href="/#about" class="nav-btn" style="text-decoration:none;">About</a></li>
             <li><a href="/#projects" class="nav-btn" style="text-decoration:none;">Projects</a></li>
             <li><a href="/#contact" class="nav-btn" style="text-decoration:none;">Links</a></li>
+            <li><a href="/personal.html" class="nav-btn active" style="text-decoration:none;">Life ↗</a></li>
           </ul>
         </nav>
       </div>
@@ -40,14 +41,14 @@
     <!-- Page Header -->
     <div class="personal-header">
       <h1 class="personal-title">Personal Life &amp; Hobbies</h1>
-      <p class="personal-tagline">// Running, creative experiments, discipline &amp; life outside code</p>
+      <p class="personal-tagline">// Long-distance running, creative experiments &amp; discipline outside code</p>
     </div>
 
     <!-- Section 1: Running & Marathon Training -->
     <section class="personal-section">
       <h2 class="section-title">01 // Long Distance Running &amp; Marathons</h2>
       <p class="personal-intro">
-        Outside of computer science and game development, <mark class="hl">long-distance running</mark> is my daily reset button. It teaches patience, aerobic stamina, and the discipline of putting one foot in front of the other regardless of fatigue. Here are recent Strava milestones:
+        Outside of computer science and game development, <mark class="hl">long-distance running</mark> is my daily reset button. It teaches patience, aerobic stamina, and the discipline of putting one foot in front of the other regardless of fatigue. Here are recent Strava milestones (click any to view full log):
       </p>
 
       <div class="running-grid">
@@ -58,8 +59,9 @@
             <span class="running-dist">5.10 KM</span>
             <span class="running-badge">5K Run</span>
           </div>
-          <div class="running-img-wrapper">
+          <div class="running-img-wrapper" data-img="/running/run-5k.png" data-caption="5.10 KM — 50m 38s (Pace: 9:56 /km)">
             <img src="/running/run-5k.png" alt="5.10 KM Strava Run Log" class="running-img" />
+            <span class="running-zoom-hint">🔍 Expand</span>
           </div>
           <div class="running-stats">
             <span>Time: <strong>50m 38s</strong></span>
@@ -74,8 +76,9 @@
             <span class="running-dist">10.06 KM</span>
             <span class="running-badge badge-green">First 10K</span>
           </div>
-          <div class="running-img-wrapper">
+          <div class="running-img-wrapper" data-img="/running/run-10k.png" data-caption="10.06 KM — 1h 30m (Pace: 9:01 /km) • First Ever 10K">
             <img src="/running/run-10k.png" alt="10.06 KM Strava First 10k Run" class="running-img" />
+            <span class="running-zoom-hint">🔍 Expand</span>
           </div>
           <div class="running-stats">
             <span>Time: <strong>1h 30m</strong></span>
@@ -90,8 +93,9 @@
             <span class="running-dist">15.39 KM</span>
             <span class="running-badge tag-featured">15K PR</span>
           </div>
-          <div class="running-img-wrapper">
+          <div class="running-img-wrapper" data-img="/running/run-15k.png" data-caption="15.39 KM — 2h 05m (Pace: 8:09 /km) • Personal Record">
             <img src="/running/run-15k.png" alt="15.39 KM Strava First 15k Run" class="running-img" />
+            <span class="running-zoom-hint">🔍 Expand</span>
           </div>
           <div class="running-stats">
             <span>Time: <strong>2h 05m</strong></span>
@@ -146,5 +150,53 @@
 
   </main>
 
+  <!-- Lightbox Modal for Full Image View -->
+  <dialog class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-box">
+      <button class="lightbox-close" id="lightboxCloseBtn" type="button">✕ Close</button>
+      <img src="" alt="Run Log" id="lightboxImg" class="lightbox-full-img" />
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </dialog>
+
+  <script>
+    // Lightbox modal logic
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
+
+    document.querySelectorAll('.running-img-wrapper').forEach((wrapper) => {
+      wrapper.addEventListener('click', () => {
+        const src = wrapper.getAttribute('data-img');
+        const caption = wrapper.getAttribute('data-caption');
+        if (lightboxModal && src) {
+          lightboxImg.src = src;
+          lightboxCaption.textContent = caption || '';
+          lightboxModal.showModal();
+        }
+      });
+    });
+
+    if (lightboxCloseBtn) {
+      lightboxCloseBtn.addEventListener('click', () => {
+        if (lightboxModal) lightboxModal.close();
+      });
+    }
+
+    if (lightboxModal) {
+      lightboxModal.addEventListener('click', (e) => {
+        const rect = lightboxModal.getBoundingClientRect();
+        if (
+          e.clientX < rect.left ||
+          e.clientX > rect.right ||
+          e.clientY < rect.top ||
+          e.clientY > rect.bottom
+        ) {
+          lightboxModal.close();
+        }
+      });
+    }
+  </script>
 </body>
 </html>

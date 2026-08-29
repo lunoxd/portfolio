@@ -224,5 +224,23 @@ if (visitModal) {
   });
 }
 
+// URL Hash Navigation Support
+function checkInitialHash() {
+  const hash = window.location.hash.toLowerCase();
+  if (hash === '#about') {
+    goToSlide(1);
+  } else if (hash === '#projects') {
+    goToSlide(2);
+  } else if (hash === '#contact' || hash === '#links') {
+    goToSlide(3);
+  } else if (hash === '#overview' || hash === '#hero') {
+    goToSlide(0);
+  }
+}
+
+window.addEventListener('load', checkInitialHash);
+window.addEventListener('hashchange', checkInitialHash);
+
 // Initial UI
 updateSlideUI();
+checkInitialHash();
