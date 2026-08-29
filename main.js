@@ -171,6 +171,27 @@ if (logoBtn) {
   });
 }
 
+// Project Category Filter (Selectable for available works only, excluding 0)
+const filterButtons = document.querySelectorAll('button.category-pill');
+const projectCards = document.querySelectorAll('.project-card');
+
+filterButtons.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    filterButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.getAttribute('data-filter');
+    projectCards.forEach((card) => {
+      if (filter === 'all' || card.classList.contains(`is-${filter}`)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
 // External Link Visit Modal
 const visitModal = document.getElementById('visitModal');
 const modalTitle = document.getElementById('modalTitle');
